@@ -31,4 +31,35 @@ public class Empresa {
 		this.departamentos = new ArrayList<>();
 		this.oficinas = new ArrayList<>();
 	}
+	public boolean agregarDepartamento(Departamento departamento) {
+		if (!departamentoExiste(departamento)) {
+			this.departamentos.add(departamento);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean departamentoExiste(Departamento departamento) {
+		for (Departamento d : this.departamentos) {
+			if (departamento.getCodigoDepa() == d.getCodigoDepa()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public void eliminarDepartamento(int codigo){
+		for (Departamento departamento : this.departamentos){
+			if(departamento.getCodigoDepa()==codigo){
+				this.departamentos.remove(departamento);
+			}
+		}
+	}
+	public Departamento buscarDepartamento(int codigo){
+		for (Departamento d : this.departamentos){
+			if(d.getCodigoDepa()==codigo){
+				return d;
+			}
+		}
+		return null;
+	}
 }

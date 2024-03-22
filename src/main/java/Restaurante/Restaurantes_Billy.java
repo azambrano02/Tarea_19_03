@@ -29,10 +29,51 @@ public class Restaurantes_Billy {
 	}
 
 	public void venderLocal(Local local) {
-		throw new UnsupportedOperationException();
+		for (Local l : this.locales) {
+			if (local.getCiudad().equals(l.getCiudad())) {
+				this.locales.remove(l);
+			}
+		}
 	}
 
-	public Local modificarLocal(Local local) {
-		throw new UnsupportedOperationException();
+	public void modificarLocal(Local local, String ciudad) {
+		for (Local l : this.locales) {
+			if (local.getCiudad().equals(l.getCiudad())) {
+				l.setCiudad(ciudad);
+			}
+		}
 	}
+
+	public boolean localExiste(Local local) {
+		for (Local l : this.locales) {
+			if (local.getCiudad().equals(l.getCiudad())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean agregarLocal(Local local) {
+		if (!localExiste(local)) {
+			this.locales.add(local);
+			return true;
+		}
+		return false;
+	}
+	public void eliminarLocal (String ciudad){
+		for (Local l : this.locales){
+			if(l.getCiudad().equals(ciudad)){
+				this.locales.remove(l);
+			}
+		}
+	}
+	public Local buscarLocal(String ciudad){
+		for (Local l : this.locales){
+			if(l.getCiudad().equals(ciudad)){
+				return l;
+			}
+		}
+		return null;
+	}
+
 }

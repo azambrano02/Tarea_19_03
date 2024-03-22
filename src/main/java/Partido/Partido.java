@@ -46,4 +46,35 @@ public class Partido {
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
 	}
+	public boolean arbitroExiste(Arbitro arbitro){
+		for(Arbitro a : this.arbitros){
+			if(arbitro.getRut()==a.getRut()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean agregarArbitro(Arbitro arbitro){
+		if(!arbitroExiste(arbitro)){
+			this.arbitros.add(arbitro);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public void eliminarArbitro(int rut){
+		for (Arbitro arbitro : this.arbitros){
+			if(arbitro.getRut()==rut){
+				this.arbitros.remove(arbitro);
+			}
+		}
+	}
+	public Arbitro buscarArbitro(int rut){
+		for (Arbitro arbitro : this.arbitros){
+			if(arbitro.getRut()==rut){
+				return arbitro;
+			}
+		}
+		return null;
+	}
 }

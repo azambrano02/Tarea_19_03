@@ -37,4 +37,35 @@ public class Recetas {
 		this.ingredientes = new ArrayList<>();
 		this.nombreReceta = nombreReceta;
 	}
+	public boolean ingredienteExiste(Ingrediente ingrediente){
+		for (Ingrediente i : this.ingredientes){
+			if(ingrediente.getNombreIngrediente().equals(i.getNombreIngrediente())){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean agregarIngrediente(Ingrediente ingrediente){
+		if(!ingredienteExiste(ingrediente)){
+			this.ingredientes.add(ingrediente);
+			return true;
+		}
+		return false;
+	}
+
+	public void eliminarIngrediente (String nombre){
+		for (Ingrediente ingrediente : this.ingredientes){
+			if(ingrediente.getNombreIngrediente().equals(nombre)){
+				this.ingredientes.remove(ingrediente);
+			}
+		}
+	}
+	public Ingrediente buscarIngrediente (String nombre){
+		for(Ingrediente i : this.ingredientes){
+			if (i.getNombreIngrediente().equals(nombre)){
+				return i;
+			}
+		}
+		return null;
+	}
 }
